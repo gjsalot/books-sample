@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gjsalot.books.ui.volumes_list.VolumesListActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buyButton"
+        android:fillViewport="true"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/horizontal_spacing"
+                android:layout_marginTop="@dimen/vertical_spacing"
+                android:scaleType="centerCrop"
+                tools:background="#dddddd"/>
+
+            <TextView
+                android:id="@+id/volumeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/thumbnail"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/horizontal_spacing"
+                android:layout_marginEnd="@dimen/horizontal_spacing"
+                app:layout_constraintTop_toTopOf="@id/thumbnail"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                tools:text="Pete the Cat: I Love My White Shoes"/>
+
+            <TextView
+                android:id="@+id/authors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/thumbnail"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/horizontal_spacing"
+                android:layout_marginEnd="@dimen/horizontal_spacing"
+                app:layout_constraintTop_toBottomOf="@+id/volumeTitle"
+                android:textSize="16sp"
+                android:textColor="#222222"
+                tools:text="James Simmons, Garth Brooks, Josh Thompson"/>
+
+            <TextView
+                android:id="@+id/publishedDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/thumbnail"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/horizontal_spacing"
+                android:layout_marginEnd="@dimen/horizontal_spacing"
+                app:layout_constraintTop_toBottomOf="@+id/authors"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                tools:text="Random Penguin, 2004"/>
+
+            <TextView
+                android:id="@+id/pages"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/thumbnail"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/horizontal_spacing"
+                android:layout_marginEnd="@dimen/horizontal_spacing"
+                app:layout_constraintTop_toBottomOf="@+id/publishedDetails"
+                android:textSize="14sp"
+                android:textColor="#222222"
+                tools:text="32 pages"/>
+
+            <!--<RatingBar-->
+            <!--android:id="@+id/rating"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_constraintStart_toEndOf="@id/thumbnail"-->
+            <!--android:layout_marginStart="@dimen/horizontal_spacing"-->
+            <!--android:layout_marginEnd="@dimen/horizontal_spacing"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/pages"-->
+            <!--android:textColor="#222222"-->
+            <!--android:numStars="5"-->
+            <!--android:rating="2"-->
+            <!--style="@style/Widget.AppCompat.RatingBar.Small"/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/ratingDescription"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_constraintStart_toEndOf="@id/thumbnail"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--android:layout_marginStart="@dimen/horizontal_spacing"-->
+            <!--android:layout_marginEnd="@dimen/horizontal_spacing"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/rating"-->
+            <!--android:textSize="10sp"-->
+            <!--android:textColor="#222222"-->
+            <!--android:text="average from 33 Goodreads users"/>-->
+
+            <android.support.constraint.Barrier
+                android:id="@+id/headerBottomBarrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="thumbnail,pages"/>
+
+            <RatingBar
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/horizontal_spacing"
+                android:layout_marginEnd="@dimen/horizontal_spacing"
+                app:layout_constraintTop_toBottomOf="@+id/headerBottomBarrier"
+                android:layout_marginTop="@dimen/vertical_spacing"
+                android:textColor="#222222"
+                android:numStars="5"
+                android:rating="2"
+                android:isIndicator="true"/>
+
+            <TextView
+                android:id="@+id/ratingDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/horizontal_spacing"
+                android:layout_marginEnd="@dimen/horizontal_spacing"
+                app:layout_constraintTop_toBottomOf="@+id/rating"
+                android:textSize="10sp"
+                android:textColor="#222222"
+                android:text="average from 33 Goodreads users"/>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/ratingDescription"
+                android:layout_marginTop="@dimen/vertical_spacing"
+                android:paddingStart="@dimen/horizontal_spacing"
+                android:paddingEnd="@dimen/horizontal_spacing"
+                android:paddingBottom="@dimen/vertical_spacing"
+                android:lineSpacingExtra="3sp"
+                tools:text="I Am Your Pet is a series of entertaining and informative books that teach young readers about basic pet care. Each of the four books in the series features full-color photographs and loads of facts about pet behavior, breeds, health care, and more."/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/buyBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/vertical_spacing"
+        android:paddingBottom="@dimen/vertical_spacing"
+        android:elevation="10dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/abebooks"
+            android:tint="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_spacing"
+            android:text="Buy on AbeBooks"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

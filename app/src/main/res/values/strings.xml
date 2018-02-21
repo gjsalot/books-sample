@@ -1,0 +1,15 @@
+<resources>
+
+    <string name="app_name">Books</string>
+
+    <!-- Common -->
+    <string name="okay">Okay</string>
+    <string name="error">Error</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+
+    <!-- Books List Page -->
+    <string name="search">Search for a book...</string>
+
+
+</resources>
