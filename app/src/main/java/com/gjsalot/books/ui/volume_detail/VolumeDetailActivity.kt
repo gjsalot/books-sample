@@ -76,7 +76,7 @@ class VolumeDetailActivity : AppCompatActivity() {
                     rating.visible = true
                     rating.rating = it.averageRating
                     ratingDescription.visible = true
-                    ratingDescription.text = "average from ${it.numRatings} Goodreads.com users"
+                    ratingDescription.text = getString(R.string.rating_description, it.numRatings.toString())
                 } else {
                     rating.visible = false
                     ratingDescription.visible = false

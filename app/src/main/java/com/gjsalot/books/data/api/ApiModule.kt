@@ -24,9 +24,6 @@ class ApiModule {
         private const val GOODREADS_NAME = "goodreads"
         private const val GOODREADS_BASE_URL = "https://www.goodreads.com/"
         private const val GOODREADS_API_KEY = "1lmCuEN1CeX2kPs9YyUUw"
-
-        private const val AMAZON_NAME = "amazon"
-        private const val AMAZON_BASE_URL = "https://www.amazon.com/gp/"
     }
 
     @Provides

@@ -3,10 +3,6 @@
     <string name="app_name">Books</string>
 
     <!-- Common -->
-    <string name="okay">Okay</string>
-    <string name="error">Error</string>
-    <string name="save">Save</string>
-    <string name="edit">Edit</string>
     <string name="retry">Retry</string>
     <string name="no_internet">Please ensure you are connected to the internet and try again...</string>
 
@@ -15,5 +11,6 @@
 
     <!-- Book Detail Page -->
     <string name="error_loading_detail">Error loading book detail. Ensure you are connected to the internet and try again.</string>
+    <string name="rating_description">average from %s Goodreads.com users</string>
 
 </resources>

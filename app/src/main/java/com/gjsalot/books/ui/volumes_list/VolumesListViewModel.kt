@@ -114,10 +114,6 @@ class VolumesListViewModel(
                         volumesSubject.onNext(nextPage)
                     else
                         volumesSubject.onNext(volumesSubject.value + nextPage)
-                }, {
-                    val error = it
-                    val numItems = viewState.value!!.volumes
-                    val t = ""
                 })
 
         // Update the ViewState every time a new immutable list of volumes is available to be shown.

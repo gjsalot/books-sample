@@ -29,10 +29,6 @@
             android:name=".ui.volume_detail.VolumeDetailActivity"
             android:theme="@style/AppTheme.ActionBar"/>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>
