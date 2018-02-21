@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_volume_detail.*
 import android.content.Intent
 import android.net.Uri
+import android.support.design.widget.Snackbar
 
 class VolumeDetailActivity : AppCompatActivity() {
 
@@ -23,6 +24,15 @@ class VolumeDetailActivity : AppCompatActivity() {
         val volumeId = intent.getStringExtra(ARG_VOLUME_ID)
         val factory = VolumeDetailViewModel.Factory(volumeId, application as Application)
         ViewModelProviders.of(this, factory).get(VolumeDetailViewModel::class.java)
+    }
+
+    private val errorLoadingSnackbar by lazy {
+        val snackback = Snackbar.make(scrollView, R.string.error_loading_detail, Snackbar.LENGTH_INDEFINITE)
+        snackback.setAction(R.string.retry) {
+            viewModel.onRetryClicked()
+            snackback.dismiss()
+        }
+        snackback
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,6 +96,12 @@ class VolumeDetailActivity : AppCompatActivity() {
                 is VolumeDetailViewModel.Event.LaunchWebBrowser -> {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.url))
                     startActivity(intent)
+                }
+
+                is VolumeDetailViewModel.Event.ShowErrorLoading -> {
+                    scrollView.postDelayed( {
+                        errorLoadingSnackbar.show()
+                    }, 2000)
                 }
 
             }

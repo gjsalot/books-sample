@@ -152,7 +152,7 @@
                 android:layout_marginStart="@dimen/horizontal_spacing"
                 android:layout_marginEnd="@dimen/horizontal_spacing"
                 app:layout_constraintTop_toBottomOf="@+id/rating"
-                android:textSize="10sp"
+                android:textSize="11sp"
                 android:textColor="#222222"
                 android:text="average from 33 Goodreads users"/>
 

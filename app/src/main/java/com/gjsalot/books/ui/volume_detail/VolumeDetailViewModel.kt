@@ -35,6 +35,7 @@ class VolumeDetailViewModel(
 
     sealed class Event {
         data class LaunchWebBrowser(val url: String): Event()
+        object ShowErrorLoading: Event()
     }
 
     private val disposable = CompositeDisposable()
@@ -48,6 +49,10 @@ class VolumeDetailViewModel(
     private var amazonUrl: String? = null
 
     init {
+        loadData()
+    }
+
+    private fun loadData() {
         disposable += volumesRepo
                 .volume(volumeId)
                 .observeOn(computation)
@@ -70,9 +75,12 @@ class VolumeDetailViewModel(
                 .subscribe({
                     viewState.value = it
                 }, {
-                    // TODO: Handle error
+                    event.value = Event.ShowErrorLoading
                 })
+    }
 
+    fun onRetryClicked() {
+        loadData()
     }
 
     fun onBuyOrRentClicked() {

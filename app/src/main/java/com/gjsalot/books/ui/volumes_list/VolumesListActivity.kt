@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.GridLayoutManager
 import android.view.inputmethod.EditorInfo
 import com.gjsalot.books.app.Application
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_volumes_list.*
 import android.view.inputmethod.InputMethodManager
 import com.gjsalot.books.R
 import com.gjsalot.books.ui.volume_detail.VolumeDetailActivity
+import com.gjsalot.books.utils.ConnectivityLiveData
 
 class VolumesListActivity : AppCompatActivity() {
 
@@ -24,6 +26,10 @@ class VolumesListActivity : AppCompatActivity() {
 
     private val adapter: VolumesListAdapter by lazy {
         VolumesListAdapter(viewModel)
+    }
+
+    private val noInternetSnackbar by lazy {
+        Snackbar.make(recyclerView, R.string.no_internet, Snackbar.LENGTH_INDEFINITE)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,6 +82,15 @@ class VolumesListActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
+            }
+        })
+
+        ConnectivityLiveData.observe(this, Observer {
+            it?.let { isConnected ->
+                if (!isConnected)
+                    noInternetSnackbar.show()
+                else
+                    noInternetSnackbar.dismiss()
             }
         })
     }

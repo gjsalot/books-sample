@@ -2,6 +2,7 @@ package com.gjsalot.books.app
 
 import com.gjsalot.books.data.api.ApiModule
 import com.gjsalot.books.data.repo.RepoModule
+import com.gjsalot.books.utils.ConnectivityLiveData
 
 class Application: android.app.Application() {
 
@@ -15,6 +16,8 @@ class Application: android.app.Application() {
                 .apiModule(ApiModule())
                 .repoModule(RepoModule())
                 .build()
+
+        ConnectivityLiveData.init(this)
     }
 
 }

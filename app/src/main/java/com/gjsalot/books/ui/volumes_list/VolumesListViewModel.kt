@@ -92,7 +92,11 @@ class VolumesListViewModel(
                 .switchMap { (query, offset) ->
                     val nextPageFlowable =
                             if (query.isNotBlank())
-                                volumesRepo.queryVolumes(query, offset).toFlowable().observeOn(computation)
+                                volumesRepo
+                                        .queryVolumes(query, offset)
+                                        .toFlowable()
+                                        .observeOn(computation)
+                                        .onErrorReturnItem(JsonVolumesResponse(0, emptyList()))
                             else
                                 Flowable.just(JsonVolumesResponse(0, emptyList())).observeOn(computation)
 
@@ -105,7 +109,6 @@ class VolumesListViewModel(
                     }
                 }
                 .observeOn(computation)
-                .onErrorReturnItem(LoadResult(emptyList(), true))
                 .subscribe({ (nextPage, isFirstPage) ->
                     if (isFirstPage)
                         volumesSubject.onNext(nextPage)
